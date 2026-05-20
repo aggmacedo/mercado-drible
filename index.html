@@ -1,0 +1,312 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Rubik:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.root{font-family:'Rubik',sans-serif;background:var(--color-background-tertiary);padding-bottom:2rem;}
+.hdr{background:#FFE600;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #D4B800;}
+.logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;color:#222;display:flex;align-items:center;gap:8px;}
+.logo-pill{background:#3483FA;color:#fff;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700;}
+.subhdr{background:#3483FA;padding:7px 16px;color:#fff;font-size:11px;font-weight:500;}
+.body{padding:14px 12px;display:flex;flex-direction:column;gap:14px;}
+.info{background:#E8F1FF;border:0.5px solid #B5D4F4;border-radius:8px;padding:10px 12px;font-size:12px;color:#0C447C;display:flex;gap:8px;line-height:1.5;}
+.info i{font-size:15px;flex-shrink:0;margin-top:1px;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:16px;}
+.card-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--color-text-primary);margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.card-title i{font-size:17px;color:#3483FA;}
+.tag-test{background:#FFF3CD;color:#8A6000;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;font-family:'Rubik',sans-serif;letter-spacing:.3px;}
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--color-border-tertiary);margin-bottom:14px;overflow-x:auto;}
+.tab{padding:7px 12px;font-size:12px;font-weight:600;color:var(--color-text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;font-family:'Rubik',sans-serif;transition:color .15s;}
+.tab.on{color:#3483FA;border-bottom-color:#3483FA;}
+.panel{display:none;}
+.panel.on{display:block;}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}
+.ctrl-lbl{font-size:12px;color:var(--color-text-secondary);white-space:nowrap;}
+.sel{border:1px solid var(--color-border-secondary);border-radius:6px;padding:5px 8px;font-size:12px;font-family:'Rubik',sans-serif;background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;}
+.chk-lbl{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary);cursor:pointer;}
+.btn{background:#FFE600;border:none;border-radius:7px;padding:7px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:#333;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,transform .1s;}
+.btn:hover{background:#F5D800;}
+.btn:active{transform:scale(.97);}
+.btn-blue{background:#3483FA;color:#fff;}
+.btn-blue:hover{background:#2968c8;}
+.btn-sm{background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);font-weight:600;padding:4px 8px;font-size:11px;border-radius:5px;cursor:pointer;font-family:'Rubik',sans-serif;display:inline-flex;align-items:center;gap:3px;transition:background .1s;}
+.btn-sm:hover{background:var(--color-background-info);color:var(--color-text-info);}
+.tbl-wrap{overflow-x:auto;border-radius:7px;border:0.5px solid var(--color-border-tertiary);}
+table.t{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;}
+table.t th{background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:600;padding:7px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);font-size:10px;text-transform:uppercase;letter-spacing:.4px;}
+table.t td{padding:8px 10px;color:var(--color-text-primary);border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+table.t tr:last-child td{border-bottom:none;}
+table.t tr:hover td{background:var(--color-background-secondary);}
+.mono{font-family:'Courier New',monospace;font-size:12px;}
+.act{display:flex;gap:8px;margin-top:10px;justify-content:flex-end;}
+.avatar{width:28px;height:28px;border-radius:50%;background:var(--color-background-info);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:10px;color:var(--color-text-info);flex-shrink:0;}
+.person-row{display:flex;align-items:center;gap:8px;}
+.person-name{font-size:12px;font-weight:500;color:var(--color-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.person-sub{font-size:10px;color:var(--color-text-secondary);}
+.foot{text-align:center;font-size:10px;color:var(--color-text-tertiary);padding:6px;margin-top:2px;}
+.avatar-colors{list-style:none;}
+</style>
+
+<h2 class="sr-only">Mercado Drible — gerador de dados fictícios de teste: CPF, RG e nomes</h2>
+
+<div class="root">
+  <div class="hdr">
+    <div class="logo">
+      <i class="ti ti-shopping-cart" aria-hidden="true" style="font-size:20px;color:#3483FA;"></i>
+      Mercado Drible
+      <span class="logo-pill">TESTE</span>
+    </div>
+    <div style="background:#3483FA;color:#fff;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;">
+      <i class="ti ti-shield-check" aria-hidden="true"></i> Fictício
+    </div>
+  </div>
+  <div class="subhdr">Gerador de dados falsos para desenvolvimento e testes de software</div>
+
+  <div class="body">
+    <div class="info">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      <span>Todos os dados são <strong>100% fictícios</strong>. CPFs usam dígitos verificadores reais. Não representam pessoas reais.</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <i class="ti ti-id-badge" aria-hidden="true"></i>
+        Gerador de documentos
+        <span class="tag-test">só testes</span>
+      </div>
+
+      <div class="tabs">
+        <div class="tab on" onclick="sw('nome')">Nome</div>
+        <div class="tab" onclick="sw('cpf')">CPF</div>
+        <div class="tab" onclick="sw('rg')">RG</div>
+        <div class="tab" onclick="sw('completo')">Completo</div>
+      </div>
+
+      <div id="p-nome" class="panel on">
+        <div class="ctrl">
+          <span class="ctrl-lbl">Qtd:</span>
+          <select class="sel" id="q-nome"><option>1</option><option>5</option><option value="10" selected>10</option><option>25</option><option>50</option></select>
+          <select class="sel" id="gen-nome"><option value="a">Misto</option><option value="m">Masculino</option><option value="f">Feminino</option></select>
+          <button class="btn" onclick="gNomes()"><i class="ti ti-refresh" aria-hidden="true"></i> Gerar</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="t">
+            <thead><tr>
+              <th style="width:32px">#</th>
+              <th style="width:60%">Nome completo</th>
+              <th style="width:55px">Gênero</th>
+              <th style="width:65px">Copiar</th>
+            </tr></thead>
+            <tbody id="tb-nome"></tbody>
+          </table>
+        </div>
+        <div class="act">
+          <button class="btn-sm" onclick="cpAll('nome')"><i class="ti ti-copy"></i> Copiar todos</button>
+          <button class="btn btn-blue" onclick="gNomes()"><i class="ti ti-refresh"></i> Regerar</button>
+        </div>
+      </div>
+
+      <div id="p-cpf" class="panel">
+        <div class="ctrl">
+          <span class="ctrl-lbl">Qtd:</span>
+          <select class="sel" id="q-cpf"><option>1</option><option>5</option><option value="10" selected>10</option><option>25</option><option>50</option></select>
+          <label class="chk-lbl"><input type="checkbox" id="fmt-cpf" checked> Formatado</label>
+          <button class="btn" onclick="gCPFs()"><i class="ti ti-refresh" aria-hidden="true"></i> Gerar</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="t">
+            <thead><tr>
+              <th style="width:32px">#</th>
+              <th>CPF</th>
+              <th style="width:50px">Dígitos</th>
+              <th style="width:65px">Copiar</th>
+            </tr></thead>
+            <tbody id="tb-cpf"></tbody>
+          </table>
+        </div>
+        <div class="act">
+          <button class="btn-sm" onclick="cpAll('cpf')"><i class="ti ti-copy"></i> Copiar todos</button>
+          <button class="btn btn-blue" onclick="gCPFs()"><i class="ti ti-refresh"></i> Regerar</button>
+        </div>
+      </div>
+
+      <div id="p-rg" class="panel">
+        <div class="ctrl">
+          <span class="ctrl-lbl">Qtd:</span>
+          <select class="sel" id="q-rg"><option>1</option><option>5</option><option value="10" selected>10</option><option>25</option><option>50</option></select>
+          <label class="chk-lbl"><input type="checkbox" id="fmt-rg" checked> Formatado</label>
+          <button class="btn" onclick="gRGs()"><i class="ti ti-refresh" aria-hidden="true"></i> Gerar</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="t">
+            <thead><tr>
+              <th style="width:32px">#</th>
+              <th>RG</th>
+              <th style="width:50px">Dígitos</th>
+              <th style="width:65px">Copiar</th>
+            </tr></thead>
+            <tbody id="tb-rg"></tbody>
+          </table>
+        </div>
+        <div class="act">
+          <button class="btn-sm" onclick="cpAll('rg')"><i class="ti ti-copy"></i> Copiar todos</button>
+          <button class="btn btn-blue" onclick="gRGs()"><i class="ti ti-refresh"></i> Regerar</button>
+        </div>
+      </div>
+
+      <div id="p-completo" class="panel">
+        <div class="ctrl">
+          <span class="ctrl-lbl">Qtd:</span>
+          <select class="sel" id="q-comp"><option>1</option><option>5</option><option value="10" selected>10</option><option>25</option></select>
+          <select class="sel" id="gen-comp"><option value="a">Misto</option><option value="m">Masculino</option><option value="f">Feminino</option></select>
+          <button class="btn" onclick="gComp()"><i class="ti ti-refresh" aria-hidden="true"></i> Gerar</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="t">
+            <thead><tr>
+              <th style="width:28px">#</th>
+              <th style="width:40%">Nome</th>
+              <th>CPF</th>
+              <th>RG</th>
+              <th style="width:48px">Copiar</th>
+            </tr></thead>
+            <tbody id="tb-comp"></tbody>
+          </table>
+        </div>
+        <div class="act">
+          <button class="btn-sm" onclick="cpAll('comp')"><i class="ti ti-copy"></i> Copiar todos</button>
+          <button class="btn btn-blue" onclick="gComp()"><i class="ti ti-refresh"></i> Regerar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">⚡ Mercado Drible • dados fictícios para devs • nada é armazenado</div>
+  </div>
+</div>
+
+<script>
+const NM = ['Ana','Beatriz','Bruna','Camila','Carla','Carolina','Cláudia','Cristina','Daniela','Débora','Eduarda','Fernanda','Gabriela','Isabel','Jéssica','Juliana','Larissa','Laura','Letícia','Luana','Luciana','Mariana','Natália','Patrícia','Paula','Priscila','Rafaela','Renata','Sabrina','Sandra','Simone','Tatiana','Thais','Vanessa','Vitória','Yasmin','Aline','Amanda','Andréa','Bianca'];
+const NP = ['Alexandre','Anderson','André','Bruno','Carlos','Daniel','Eduardo','Fabio','Felipe','Fernando','Francisco','Gabriel','Guilherme','Gustavo','João','José','Leonardo','Lucas','Luis','Marcelo','Marcos','Mateus','Matheus','Miguel','Paulo','Pedro','Rafael','Ricardo','Roberto','Rodrigo','Tiago','Victor','Vinicius','Wagner','Wellington','Thiago','Diego','Leandro','Henrique','Renato'];
+const SB = ['Silva','Santos','Oliveira','Souza','Lima','Pereira','Costa','Ferreira','Rodrigues','Almeida','Nascimento','Carvalho','Freitas','Gomes','Martins','Araújo','Barbosa','Ribeiro','Mendes','Dias','Castro','Monteiro','Moreira','Nunes','Pinto','Ramos','Lopes','Cruz','Cardoso','Teixeira'];
+const AVATARS = ['#E8F1FF:#0C447C','#E1F5EE:#085041','#FAEEDA:#633806','#FBEAF0:#72243E','#EAF3DE:#27500A','#FAECE7:#712B13','#EEEDFE:#3C3489'];
+
+function rnd(n){return Math.floor(Math.random()*n);}
+function pick(a){return a[rnd(a.length)];}
+
+function nome(gen){
+  const g = gen==='a'?(rnd(2)?'m':'f'):gen;
+  const first = g==='f'?pick(NM):pick(NP);
+  return {n:`${first} ${pick(SB)} ${pick(SB)}`, g};
+}
+
+function cpf(fmt){
+  let d=Array.from({length:9},()=>rnd(10));
+  let s1=d.reduce((a,v,i)=>a+v*(10-i),0);
+  let v1=(s1*10)%11; if(v1>=10)v1=0; d.push(v1);
+  let s2=d.reduce((a,v,i)=>a+v*(11-i),0);
+  let v2=(s2*10)%11; if(v2>=10)v2=0; d.push(v2);
+  let r=d.join('');
+  return fmt?r.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/,'$1.$2.$3-$4'):r;
+}
+
+function rg(fmt){
+  let d=Array.from({length:8},()=>rnd(10));
+  let s=d.reduce((a,v,i)=>a+v*[2,3,4,5,6,7,8,9][i],0);
+  let v=11-(s%11); if(v>=10)v=0; d.push(v);
+  let r=d.join('');
+  return fmt?r.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/,'$1.$2.$3-$4'):r;
+}
+
+function av(initials,idx){
+  const [bg,tx]=AVATARS[idx%AVATARS.length].split(':');
+  return `<div class="avatar" style="background:${bg};color:${tx};">${initials}</div>`;
+}
+
+function initials(n){return n.split(' ').filter((_,i)=>i<2).map(w=>w[0]).join('').toUpperCase();}
+
+function genderLabel(g){
+  return g==='f'
+    ?'<span style="background:#FBEAF0;color:#72243E;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;">Fem</span>'
+    :'<span style="background:#E8F1FF;color:#0C447C;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;">Mas</span>';
+}
+
+function cpBtn(val,el){
+  navigator.clipboard.writeText(val).then(()=>{
+    el.innerHTML='<i class="ti ti-check"></i> Ok!';
+    el.style.color='#1D9E75';
+    setTimeout(()=>{el.innerHTML='<i class="ti ti-copy"></i> Copiar';el.style.color='';},1400);
+  });
+}
+
+let lists={nome:[],cpf:[],rg:[],comp:[]};
+
+function gNomes(){
+  const q=+document.getElementById('q-nome').value;
+  const gen=document.getElementById('gen-nome').value;
+  lists.nome=Array.from({length:q},()=>nome(gen));
+  document.getElementById('tb-nome').innerHTML=lists.nome.map((o,i)=>`
+    <tr>
+      <td style="color:var(--color-text-tertiary);">${i+1}</td>
+      <td><div class="person-row">${av(initials(o.n),i)}<div><div class="person-name">${o.n}</div></div></div></td>
+      <td>${genderLabel(o.g)}</td>
+      <td><button class="btn-sm" onclick="cpBtn('${o.n}',this)"><i class="ti ti-copy"></i> Copiar</button></td>
+    </tr>`).join('');
+}
+
+function gCPFs(){
+  const q=+document.getElementById('q-cpf').value;
+  const fmt=document.getElementById('fmt-cpf').checked;
+  lists.cpf=Array.from({length:q},()=>cpf(fmt));
+  document.getElementById('tb-cpf').innerHTML=lists.cpf.map((c,i)=>`
+    <tr>
+      <td style="color:var(--color-text-tertiary);">${i+1}</td>
+      <td class="mono">${c}</td>
+      <td style="color:var(--color-text-secondary);font-size:10px;">${c.replace(/\D/g,'').length}</td>
+      <td><button class="btn-sm" onclick="cpBtn('${c}',this)"><i class="ti ti-copy"></i> Copiar</button></td>
+    </tr>`).join('');
+}
+
+function gRGs(){
+  const q=+document.getElementById('q-rg').value;
+  const fmt=document.getElementById('fmt-rg').checked;
+  lists.rg=Array.from({length:q},()=>rg(fmt));
+  document.getElementById('tb-rg').innerHTML=lists.rg.map((r,i)=>`
+    <tr>
+      <td style="color:var(--color-text-tertiary);">${i+1}</td>
+      <td class="mono">${r}</td>
+      <td style="color:var(--color-text-secondary);font-size:10px;">${r.replace(/\D/g,'').length}</td>
+      <td><button class="btn-sm" onclick="cpBtn('${r}',this)"><i class="ti ti-copy"></i> Copiar</button></td>
+    </tr>`).join('');
+}
+
+function gComp(){
+  const q=+document.getElementById('q-comp').value;
+  const gen=document.getElementById('gen-comp').value;
+  lists.comp=Array.from({length:q},()=>({...nome(gen),cpf:cpf(true),rg:rg(true)}));
+  document.getElementById('tb-comp').innerHTML=lists.comp.map((o,i)=>`
+    <tr>
+      <td style="color:var(--color-text-tertiary);">${i+1}</td>
+      <td><div class="person-row">${av(initials(o.n),i)}<div class="person-name">${o.n}</div></div></td>
+      <td class="mono" style="font-size:11px;">${o.cpf}</td>
+      <td class="mono" style="font-size:11px;">${o.rg}</td>
+      <td><button class="btn-sm" onclick="cpBtn('${o.n} | CPF: ${o.cpf} | RG: ${o.rg}',this)"><i class="ti ti-copy"></i></button></td>
+    </tr>`).join('');
+}
+
+function cpAll(type){
+  let text='';
+  if(type==='nome') text=lists.nome.map(o=>o.n).join('\n');
+  else if(type==='cpf') text=lists.cpf.join('\n');
+  else if(type==='rg') text=lists.rg.join('\n');
+  else if(type==='comp') text=lists.comp.map(o=>`${o.n}\t${o.cpf}\t${o.rg}`).join('\n');
+  if(!text)return;
+  navigator.clipboard.writeText(text);
+}
+
+function sw(tab){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',['nome','cpf','rg','completo'][i]===tab));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.getElementById('p-'+tab).classList.add('on');
+}
+
+gNomes(); gCPFs(); gRGs(); gComp();
+</script>
